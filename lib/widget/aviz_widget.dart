@@ -16,7 +16,7 @@ class AvizWidget extends StatelessWidget {
           Radius.circular(6),
         ),
       ),
-      child: Image.asset("images/icon_header.png"),
+      child: Image.asset("assets/images/icon_header.png"),
     );
   }
 }

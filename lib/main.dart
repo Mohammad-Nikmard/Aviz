@@ -1,5 +1,5 @@
 import 'package:aviz/constants/constants.dart';
-import 'package:aviz/ui/third_screen.dart';
+import 'package:aviz/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const ThirdScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }

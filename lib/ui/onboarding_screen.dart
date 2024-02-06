@@ -1,9 +1,11 @@
 import 'package:aviz/constants/constants.dart';
+import 'package:aviz/ui/register_screen.dart';
+import 'package:aviz/ui/login_screen.dart';
 import 'package:aviz/widget/aviz_widget.dart';
 import 'package:flutter/material.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +13,9 @@ class FirstScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            _UpperBody(),
+            _UpperBodyLayout(),
             Spacer(),
-            _Buttons(),
+            _LowerBodyButtons(),
           ],
         ),
       ),
@@ -21,8 +23,8 @@ class FirstScreen extends StatelessWidget {
   }
 }
 
-class _Buttons extends StatelessWidget {
-  const _Buttons();
+class _LowerBodyButtons extends StatelessWidget {
+  const _LowerBodyButtons();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,14 @@ class _Buttons extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "ورود",
                       style: TextStyle(
@@ -68,7 +77,14 @@ class _Buttons extends StatelessWidget {
                 child: SizedBox(
                   height: 40,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterScreen(),
+                        ),
+                      );
+                    },
                     child: const Text("ثبت نام"),
                   ),
                 ),
@@ -81,8 +97,8 @@ class _Buttons extends StatelessWidget {
   }
 }
 
-class _UpperBody extends StatelessWidget {
-  const _UpperBody();
+class _UpperBodyLayout extends StatelessWidget {
+  const _UpperBodyLayout();
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +106,13 @@ class _UpperBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const SizedBox(
-          height: 50,
+          height: 60,
         ),
         Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            Image.asset("images/background_splash.png"),
-            Image.asset("images/logo_splash.png"),
+            Image.asset("assets/images/background_splash.png"),
+            Image.asset("assets/images/logo_splash.png"),
           ],
         ),
         const SizedBox(height: 25),
@@ -122,7 +138,7 @@ class _UpperBody extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Text(
-              "در آویز ملک خود را برای فروش , اجاره و رهن آگهی کنید و یا اگر دنبال ملک با مشخصات دلخواه خود هستید آویز ها را ببینید",
+              "در آویز ملک خود را برای فروش،اجاره و رهن آگهی کنید و یا اگر دنبال ملک با مشخصات دلخواه خود هستید آویز ها را ببینید",
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),

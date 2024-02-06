@@ -1,9 +1,11 @@
 import 'package:aviz/constants/constants.dart';
+import 'package:aviz/ui/register_screen.dart';
+import 'package:aviz/ui/login_validation_screen.dart';
 import 'package:aviz/widget/aviz_widget.dart';
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,9 @@ class SecondScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              _UpperBody(),
+              _UpperBodyLayout(),
               Spacer(),
-              _LoweBody(),
+              _LoweBodyButtons(),
             ],
           ),
         ),
@@ -24,26 +26,33 @@ class SecondScreen extends StatelessWidget {
   }
 }
 
-class _LoweBody extends StatelessWidget {
-  const _LoweBody();
+class _LoweBodyButtons extends StatelessWidget {
+  const _LoweBodyButtons();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             children: [
               Expanded(
                 child: SizedBox(
                   height: 40,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginValidationScreen(),
+                        ),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("images/icon_arrow-left_white.png"),
+                        Image.asset("assets/images/icon_arrow_left_white.png"),
                         const Text("مرحله بعد"),
                       ],
                     ),
@@ -54,12 +63,19 @@ class _LoweBody extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 15),
+          padding: const EdgeInsets.only(bottom: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () {},
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterScreen(),
+                    ),
+                  );
+                },
                 child: const Text(
                   "ثبت نام",
                   style: TextStyle(
@@ -69,6 +85,9 @@ class _LoweBody extends StatelessWidget {
                     color: ProjectColors.redColor,
                   ),
                 ),
+              ),
+              const SizedBox(
+                width: 2,
               ),
               Text(
                 "تا حالا ثبت نام نکردی؟",
@@ -82,8 +101,8 @@ class _LoweBody extends StatelessWidget {
   }
 }
 
-class _UpperBody extends StatelessWidget {
-  const _UpperBody();
+class _UpperBodyLayout extends StatelessWidget {
+  const _UpperBodyLayout();
 
   @override
   Widget build(BuildContext context) {
