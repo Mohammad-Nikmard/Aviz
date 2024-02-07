@@ -1,5 +1,6 @@
 import 'package:aviz/constants/constants.dart';
-import 'package:aviz/ui/add_post_screen.dart';
+import 'package:aviz/ui/fourth_screen.dart';
+import 'package:aviz/ui/third_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const AddPostScreen(),
+      home: const FourthScreen(),
     );
   }
 }

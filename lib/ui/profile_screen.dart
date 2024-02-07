@@ -39,17 +39,18 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                const OptionChip(title: "آگهی های من", image: "icon_posts.png"),
-                const OptionChip(
+                const _OptionChip(
+                    title: "آگهی های من", image: "icon_posts.png"),
+                const _OptionChip(
                     title: "پرداخت های من", image: "icon_card.png"),
-                const OptionChip(
+                const _OptionChip(
                     title: "بازدید های اخیر", image: "icon_eye.png"),
-                const OptionChip(
+                const _OptionChip(
                     title: "ذخیره شده ها", image: "icon_saved_posts.png"),
-                const OptionChip(title: "تنظیمات", image: "icon_setting.png"),
-                const OptionChip(
+                const _OptionChip(title: "تنظیمات", image: "icon_setting.png"),
+                const _OptionChip(
                     title: "پشتیبانی و قوانین", image: "icon_backup.png"),
-                const OptionChip(title: "درباره آویز", image: "icon_info.png"),
+                const _OptionChip(title: "درباره آویز", image: "icon_info.png"),
                 const SizedBox(
                   height: 35,
                 ),
@@ -78,8 +79,8 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class OptionChip extends StatelessWidget {
-  const OptionChip({super.key, required this.title, required this.image});
+class _OptionChip extends StatelessWidget {
+  const _OptionChip({super.key, required this.title, required this.image});
   final String title;
   final String image;
 

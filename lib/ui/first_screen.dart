@@ -1,8 +1,8 @@
 import 'package:aviz/widget/category_option_chip.dart';
 import 'package:flutter/material.dart';
 
-class AddPostScreen extends StatelessWidget {
-  const AddPostScreen({super.key});
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,12 @@ class AddPostScreen extends StatelessWidget {
         ),
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
           children: [
-            CategoryOptionChip(title: "اجاره مسکونی"),
-            CategoryOptionChip(title: "فروش مسکونی"),
-            CategoryOptionChip(title: "فروش دفاتر اداری و تجاری"),
-            CategoryOptionChip(title: "اجاره دفاتر اداری و تجاری"),
-            CategoryOptionChip(title: "اجاره کوتاه مدت"),
-            CategoryOptionChip(title: "پروژه های ساخت و ساز"),
+            CategoryOptionChip(title: "فروش آپارتمان"),
+            CategoryOptionChip(title: "فروش خانه و ویلا"),
+            CategoryOptionChip(title: "فروش زمین و کلنگی"),
           ],
         ),
       ),
