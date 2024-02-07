@@ -1,6 +1,5 @@
 import 'package:aviz/constants/constants.dart';
-import 'package:aviz/ui/fourth_screen.dart';
-import 'package:aviz/ui/third_screen.dart';
+import 'package:aviz/ui/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -57,7 +56,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const FourthScreen(),
+      home: const DashBoardScreen(),
     );
   }
 }

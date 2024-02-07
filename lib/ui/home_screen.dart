@@ -1,4 +1,3 @@
-import 'package:aviz/constants/constants.dart';
 import 'package:aviz/widget/hot_aviz_widget.dart';
 import 'package:aviz/widget/recent_aviz_post.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: ProjectColors.greyBackgroundColor,
       body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
