@@ -15,9 +15,9 @@ class RegisterScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              _UpperBodyLayout(),
+              _InputFields(),
               Spacer(),
-              _LoweBodyButtons(),
+              _ActionButtons(),
             ],
           ),
         ),
@@ -26,8 +26,8 @@ class RegisterScreen extends StatelessWidget {
   }
 }
 
-class _UpperBodyLayout extends StatelessWidget {
-  const _UpperBodyLayout();
+class _InputFields extends StatelessWidget {
+  const _InputFields();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class _UpperBodyLayout extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             filled: true,
-            fillColor: ProjectColors.greyColor.withOpacity(0.1),
+            fillColor: const Color(0xffF9FAFB),
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(7),
@@ -100,7 +100,7 @@ class _UpperBodyLayout extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             filled: true,
-            fillColor: ProjectColors.greyColor.withOpacity(0.1),
+            fillColor: const Color(0xffF9FAFB),
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(7),
@@ -126,8 +126,8 @@ class _UpperBodyLayout extends StatelessWidget {
   }
 }
 
-class _LoweBodyButtons extends StatelessWidget {
-  const _LoweBodyButtons();
+class _ActionButtons extends StatelessWidget {
+  const _ActionButtons();
 
   @override
   Widget build(BuildContext context) {

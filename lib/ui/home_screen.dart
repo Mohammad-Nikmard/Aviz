@@ -8,7 +8,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         centerTitle: true,
         title: Image.asset("assets/images/icon_header.png"),
         elevation: 0,
@@ -16,16 +18,16 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 15),
           child: CustomScrollView(
             slivers: [
-              ListHeader(title: "آویز های داغ"),
-              HotPostList(),
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 20,
                 ),
               ),
+              ListHeader(title: "آویز های داغ"),
+              HotPostList(),
               ListHeader(title: "آویز های اخیر"),
               RecentPostList(),
             ],
@@ -68,22 +70,19 @@ class HotPostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.only(right: 5),
-        child: SizedBox(
-          height: 267,
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: HotAvizWidget(),
-                );
-              },
-            ),
+      child: SizedBox(
+        height: 287,
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: ListView.builder(
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.only(left: 15, bottom: 20),
+                child: HotAvizWidget(),
+              );
+            },
           ),
         ),
       ),
@@ -100,7 +99,7 @@ class RecentPostList extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           return const Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(vertical: 8),
             child: RecentAvizPost(),
           );
         },

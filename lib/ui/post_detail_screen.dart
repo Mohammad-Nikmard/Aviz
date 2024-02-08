@@ -3,14 +3,15 @@ import 'package:aviz/util/extension/int_extension.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
-class PostScreen extends StatefulWidget {
-  const PostScreen({super.key});
+class PostDetailScreen extends StatefulWidget {
+  const PostDetailScreen({super.key});
 
   @override
-  State<PostScreen> createState() => _PostScreenState();
+  State<PostDetailScreen> createState() => _PostDetailScreenState();
 }
 
-class _PostScreenState extends State<PostScreen> with TickerProviderStateMixin {
+class _PostDetailScreenState extends State<PostDetailScreen>
+    with TickerProviderStateMixin {
   TabController? _controller;
 
   @override
@@ -31,17 +32,28 @@ class _PostScreenState extends State<PostScreen> with TickerProviderStateMixin {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leadingWidth: 140,
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Image.asset("assets/images/icon_save.png"),
-            Image.asset("assets/images/icon_share.png"),
-            Image.asset("assets/images/icon_alert.png"),
-          ],
+        leadingWidth: 145,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Image.asset("assets/images/icon_save.png"),
+              Image.asset("assets/images/icon_share.png"),
+              Image.asset("assets/images/icon_alert.png"),
+            ],
+          ),
         ),
         actions: [
-          Image.asset("assets/images/icon_arrow_right.png"),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset("assets/images/icon_arrow_right.png"),
+            ),
+          ),
         ],
       ),
       body: SafeArea(
@@ -53,9 +65,12 @@ class _PostScreenState extends State<PostScreen> with TickerProviderStateMixin {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 160,
+                height: 170,
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/post_background.png"),
+                    fit: BoxFit.cover,
+                  ),
                   borderRadius: BorderRadius.all(
                     Radius.circular(5),
                   ),
@@ -144,6 +159,8 @@ class _PostScreenState extends State<PostScreen> with TickerProviderStateMixin {
               SizedBox(
                 height: 35,
                 child: TabBar(
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  padding: const EdgeInsets.only(left: 8),
                   indicatorPadding: const EdgeInsets.symmetric(horizontal: 4),
                   labelColor: Colors.white,
                   labelStyle: const TextStyle(
@@ -208,7 +225,7 @@ class InteractionButtons extends StatelessWidget {
       children: [
         Expanded(
           child: SizedBox(
-            height: 40,
+            height: 45,
             child: ElevatedButton(
               onPressed: () {},
               child: Row(
@@ -225,7 +242,7 @@ class InteractionButtons extends StatelessWidget {
         const SizedBox(width: 20),
         Expanded(
           child: SizedBox(
-            height: 40,
+            height: 45,
             child: ElevatedButton(
               onPressed: () {},
               child: Row(
@@ -376,7 +393,7 @@ class SpecificationsTab extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Image.asset("assets/images/Frame 48 (1).png"),
+          Image.asset("assets/images/map_image.png"),
           const SizedBox(
             height: 20,
           ),

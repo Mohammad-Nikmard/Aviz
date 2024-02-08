@@ -20,9 +20,9 @@ class _RegisterValidationScreenState extends State<RegisterValidationScreen> {
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              _UpperBodyValidation(),
+              _InputValidation(),
               Spacer(),
-              _LowerBodyButton(),
+              _ActionButton(),
             ],
           ),
         ),
@@ -31,8 +31,8 @@ class _RegisterValidationScreenState extends State<RegisterValidationScreen> {
   }
 }
 
-class _UpperBodyValidation extends StatelessWidget {
-  const _UpperBodyValidation();
+class _InputValidation extends StatelessWidget {
+  const _InputValidation();
 
   @override
   Widget build(BuildContext context) {
@@ -114,8 +114,8 @@ class _UpperBodyValidation extends StatelessWidget {
   }
 }
 
-class _LowerBodyButton extends StatelessWidget {
-  const _LowerBodyButton({super.key});
+class _ActionButton extends StatelessWidget {
+  const _ActionButton();
 
   @override
   Widget build(BuildContext context) {

@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        splashColor: Colors.transparent,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: ProjectColors.redColor,
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(
             fontFamily: "SM",
             fontSize: 16,
+            fontWeight: FontWeight.w400,
             color: Colors.black,
           ),
           bodyLarge: TextStyle(
@@ -48,11 +50,10 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
             fontSize: 16,
           ),
-          labelSmall: TextStyle(
+          titleMedium: TextStyle(
             fontFamily: "SM",
-            color: ProjectColors.redColor,
-            fontWeight: FontWeight.w400,
             fontSize: 14,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),

@@ -1,14 +1,18 @@
 import 'package:aviz/constants/constants.dart';
+import 'package:aviz/ui/location_setting_screen.dart';
 import 'package:aviz/widget/facility_chip.dart';
 import 'package:flutter/material.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
+class RegisterPostScreen extends StatelessWidget {
+  const RegisterPostScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -21,67 +25,95 @@ class SecondScreen extends StatelessWidget {
               width: 24,
             ),
             Image.asset("assets/images/icon_post_aviz.png"),
-            Image.asset("assets/images/icon_arrow_right.png"),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset("assets/images/icon_arrow_right.png"),
+            ),
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const _ChooseCategorySection(),
-              const SizedBox(
-                height: 25,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: LinearProgressBar(
+                maxSteps: 5,
+                minHeight: 4,
+                progressType:
+                    LinearProgressBar.progressTypeLinear, // Use Linear progress
+                currentStep: 3,
+                progressColor: Colors.red,
+                backgroundColor: Colors.transparent,
               ),
-              Divider(
-                indent: 0,
-                endIndent: 0,
-                color: ProjectColors.greyColor.withOpacity(0.2),
-                thickness: 1,
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              const _FeatureSection(),
-              const SizedBox(
-                height: 25,
-              ),
-              Divider(
-                indent: 0,
-                endIndent: 0,
-                color: ProjectColors.greyColor.withOpacity(0.2),
-                thickness: 1,
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: Column(
                 children: [
-                  Text(
-                    "امکانات",
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  const _ChooseCategorySection(),
+                  const SizedBox(
+                    height: 25,
                   ),
-                  const SizedBox(width: 5),
-                  Image.asset("assets/images/icon_facilities.png"),
+                  Divider(
+                    indent: 0,
+                    endIndent: 0,
+                    color: ProjectColors.greyColor.withOpacity(0.2),
+                    thickness: 1,
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const _FeatureSection(),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Divider(
+                    indent: 0,
+                    endIndent: 0,
+                    color: ProjectColors.greyColor.withOpacity(0.2),
+                    thickness: 1,
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "امکانات",
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      const SizedBox(width: 5),
+                      Image.asset("assets/images/icon_facilities.png"),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const FacilityChip(title: "آسانسور"),
+                  const FacilityChip(title: "پارکینگ"),
+                  const FacilityChip(title: "انباری"),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(MediaQuery.of(context).size.width, 40),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LocationSettingScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text("بعدی"),
+                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
-              const SizedBox(height: 10),
-              const FacilityChip(title: "آسانسور"),
-              const FacilityChip(title: "پارکینگ"),
-              const FacilityChip(title: "انباری"),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(MediaQuery.of(context).size.width, 40),
-                ),
-                onPressed: () {},
-                child: const Text("بعدی"),
-              ),
-              const SizedBox(height: 20),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -123,9 +155,9 @@ class _FeatureSection extends StatelessWidget {
                 Container(
                   width: 159,
                   height: 48,
-                  decoration: BoxDecoration(
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF9FAFB),
+                    borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
@@ -179,9 +211,9 @@ class _FeatureSection extends StatelessWidget {
                 Container(
                   width: 159,
                   height: 48,
-                  decoration: BoxDecoration(
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF9FAFB),
+                    borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
@@ -236,9 +268,9 @@ class _FeatureSection extends StatelessWidget {
                 Container(
                   width: 159,
                   height: 48,
-                  decoration: BoxDecoration(
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF9FAFB),
+                    borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
@@ -289,9 +321,9 @@ class _FeatureSection extends StatelessWidget {
                 Container(
                   width: 159,
                   height: 48,
-                  decoration: BoxDecoration(
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF9FAFB),
+                    borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
@@ -381,9 +413,9 @@ class _ChooseCategorySectionState extends State<_ChooseCategorySection> {
                 Container(
                   width: 159,
                   height: 48,
-                  decoration: BoxDecoration(
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF9FAFB),
+                    borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),

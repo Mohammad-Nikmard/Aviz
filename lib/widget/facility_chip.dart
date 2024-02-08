@@ -35,6 +35,7 @@ class _FacilityChipState extends State<FacilityChip> {
               FlutterSwitch(
                 inactiveText: "",
                 activeText: "",
+                inactiveColor: const Color(0xffD0D5DD),
                 activeColor: ProjectColors.redColor,
                 width: 28.0,
                 height: 20.0,

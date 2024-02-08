@@ -8,6 +8,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Image.asset("assets/images/icon_header_profile.png"),
         centerTitle: true,
         elevation: 0,
@@ -80,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _OptionChip extends StatelessWidget {
-  const _OptionChip({super.key, required this.title, required this.image});
+  const _OptionChip({required this.title, required this.image});
   final String title;
   final String image;
 
@@ -130,7 +131,9 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ProjectColors.greyColor.withOpacity(0.1),
+        border: Border.all(
+          color: const Color(0xffF2F4F7),
+        ),
         borderRadius: const BorderRadius.all(
           Radius.circular(5),
         ),
@@ -148,7 +151,9 @@ class SearchBox extends StatelessWidget {
                     hintText: "جستجو...",
                     hintStyle: Theme.of(context).textTheme.bodySmall,
                     contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 15),
+                      horizontal: 12,
+                      vertical: 12,
+                    ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         width: 0,
