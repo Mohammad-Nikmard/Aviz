@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/widget/facility_chip.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';

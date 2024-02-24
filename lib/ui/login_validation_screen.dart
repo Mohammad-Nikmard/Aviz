@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:pinput/pinput.dart';

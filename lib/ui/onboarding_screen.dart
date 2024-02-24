@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/register_screen.dart';
 import 'package:aviz/ui/login_screen.dart';
 import 'package:aviz/widget/aviz_widget.dart';

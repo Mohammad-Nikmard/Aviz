@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/onboarding_screen.dart';
 import 'package:aviz/ui/real_estate_category_screen.dart';
 import 'package:aviz/ui/home_screen.dart';

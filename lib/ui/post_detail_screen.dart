@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/util/extension/int_extension.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';

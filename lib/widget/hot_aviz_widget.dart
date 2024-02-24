@@ -1,4 +1,4 @@
-import 'package:aviz/constants/constants.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/post_detail_screen.dart';
 import 'package:aviz/widget/price_tag.dart';
 import 'package:flutter/material.dart';
