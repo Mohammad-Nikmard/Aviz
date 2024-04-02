@@ -1,6 +1,8 @@
+import 'package:aviz/ui/category_search_screen.dart';
 import 'package:aviz/widget/hot_aviz_widget.dart';
 import 'package:aviz/widget/recent_aviz_post.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,9 +51,20 @@ class ListHeader extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "مشاهده همه",
-              style: Theme.of(context).textTheme.bodySmall,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CategorySearch(
+                      title: title,
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                "مشاهده همه",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ),
             Text(
               title,

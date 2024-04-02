@@ -1,6 +1,6 @@
+import 'dart:async';
 import 'package:aviz/constants/color_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:pinput/pinput.dart';
 
 class LoginValidationScreen extends StatefulWidget {
@@ -30,8 +30,46 @@ class _LoginValidationScreenState extends State<LoginValidationScreen> {
   }
 }
 
-class _InputValidation extends StatelessWidget {
+class _InputValidation extends StatefulWidget {
   const _InputValidation();
+
+  @override
+  State<_InputValidation> createState() => _InputValidationState();
+}
+
+class _InputValidationState extends State<_InputValidation> {
+  late Timer timer;
+  int start = 60;
+
+  void startTimer() {
+    const oneSec = Duration(seconds: 1);
+    timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            start--;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,27 +122,33 @@ class _InputValidation extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "ارسال مجدد کد",
-              style: Theme.of(context).textTheme.bodySmall,
+            GestureDetector(
+              onTap: () {
+                if (start == 0) {
+                  setState(() {
+                    start = 60;
+                    startTimer();
+                  });
+                }
+              },
+              child: Text(
+                "ارسال مجدد کد",
+                style: TextStyle(
+                  fontFamily: "SM",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: start == 0
+                      ? ProjectColors.redColor
+                      : ProjectColors.greyColor,
+                ),
+              ),
             ),
             const SizedBox(
               width: 5,
             ),
-            TimerCountdown(
-              timeTextStyle: const TextStyle(fontFamily: "SM"),
-              spacerWidth: 2,
-              enableDescriptions: false,
-              format: CountDownTimerFormat.minutesSeconds,
-              endTime: DateTime.now().add(
-                const Duration(
-                  minutes: 00,
-                  seconds: 60,
-                ),
-              ),
-              onEnd: () {
-                print("Timer finished");
-              },
+            Text(
+              "00:$start${(start == 0) ? 0 : ''}",
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),

@@ -39,7 +39,6 @@ class _InputValidation extends StatefulWidget {
 }
 
 class _InputValidationState extends State<_InputValidation> {
-  bool isTimerDone = false;
   late Timer timer;
   int start = 60;
 
