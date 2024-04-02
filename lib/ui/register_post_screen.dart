@@ -166,7 +166,71 @@ class _FeatureSectionState extends State<_FeatureSection> {
                 const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () {
-                    chossingDialog(roomNums, 0, 10);
+                    int freshValue = roomNums;
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "بستن",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: ProjectColors.redColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  roomNums = freshValue;
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "انتخاب",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                          content: StatefulBuilder(
+                            // ignore: non_constant_identifier_names
+                            builder: (context, SBsetState) {
+                              return NumberPicker(
+                                textStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                selectedTextStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 22,
+                                  color: Colors.blue,
+                                ),
+                                value: freshValue,
+                                minValue: 0,
+                                maxValue: 10,
+                                onChanged: (val) {
+                                  setState(() {
+                                    freshValue = val;
+                                    SBsetState(() => freshValue = val);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
                   },
                   child: Container(
                     width: 159,
@@ -211,7 +275,71 @@ class _FeatureSectionState extends State<_FeatureSection> {
                 const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () {
-                    chossingDialog(year, 1300, 1403);
+                    int freshValue = year;
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "بستن",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: ProjectColors.redColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  year = freshValue;
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "انتخاب",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                          content: StatefulBuilder(
+                            // ignore: non_constant_identifier_names
+                            builder: (context, SBsetState) {
+                              return NumberPicker(
+                                textStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                selectedTextStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 22,
+                                  color: Colors.blue,
+                                ),
+                                value: freshValue,
+                                minValue: 1300,
+                                maxValue: 1403,
+                                onChanged: (val) {
+                                  setState(() {
+                                    freshValue = val;
+                                    SBsetState(() => freshValue = val);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
                   },
                   child: Container(
                     width: 159,
@@ -260,7 +388,71 @@ class _FeatureSectionState extends State<_FeatureSection> {
                 const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () {
-                    chossingDialog(meterage, 55, 500);
+                    int freshValue = meterage;
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "بستن",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: ProjectColors.redColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  meterage = freshValue;
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "انتخاب",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                          content: StatefulBuilder(
+                            // ignore: non_constant_identifier_names
+                            builder: (context, SBsetState) {
+                              return NumberPicker(
+                                textStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                selectedTextStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 22,
+                                  color: Colors.blue,
+                                ),
+                                value: freshValue,
+                                minValue: 55,
+                                maxValue: 500,
+                                onChanged: (val) {
+                                  setState(() {
+                                    freshValue = val;
+                                    SBsetState(() => freshValue = val);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
                   },
                   child: Container(
                     width: 159,
@@ -305,7 +497,71 @@ class _FeatureSectionState extends State<_FeatureSection> {
                 const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () {
-                    chossingDialog(floors, 0, 30);
+                    int freshValue = floors;
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "بستن",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: ProjectColors.redColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  floors = freshValue;
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "انتخاب",
+                                style: TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                          content: StatefulBuilder(
+                            // ignore: non_constant_identifier_names
+                            builder: (context, SBsetState) {
+                              return NumberPicker(
+                                textStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                selectedTextStyle: const TextStyle(
+                                  fontFamily: "SM",
+                                  fontSize: 22,
+                                  color: Colors.blue,
+                                ),
+                                value: freshValue,
+                                minValue: 0,
+                                maxValue: 30,
+                                onChanged: (val) {
+                                  setState(() {
+                                    freshValue = val;
+                                    SBsetState(() => freshValue = val);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
                   },
                   child: Container(
                     width: 159,
@@ -347,73 +603,6 @@ class _FeatureSectionState extends State<_FeatureSection> {
           ],
         ),
       ],
-    );
-  }
-
-  chossingDialog(int valueNum, int minVal, int maxVal) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              NumberPicker(
-                selectedTextStyle: const TextStyle(
-                  fontFamily: "SM",
-                  fontSize: 24,
-                  color: Colors.blue,
-                ),
-                textStyle: const TextStyle(
-                  fontFamily: "SM",
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-                value: valueNum,
-                minValue: minVal,
-                maxValue: maxVal,
-                onChanged: (value) {
-                  setState(() {
-                    valueNum = value;
-                  });
-                },
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "بستن",
-                      style: TextStyle(
-                        fontFamily: "SM",
-                        fontSize: 16,
-                        color: ProjectColors.redColor,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "انتخاب",
-                      style: TextStyle(
-                        fontFamily: "SM",
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
