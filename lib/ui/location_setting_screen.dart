@@ -38,11 +38,11 @@ class LocationSettingScreen extends StatelessWidget {
           Directionality(
             textDirection: TextDirection.rtl,
             child: LinearProgressBar(
-              maxSteps: 5,
+              maxSteps: 4,
               minHeight: 4,
               progressType:
                   LinearProgressBar.progressTypeLinear, // Use Linear progress
-              currentStep: 4,
+              currentStep: 3,
               progressColor: Colors.red,
               backgroundColor: Colors.transparent,
             ),

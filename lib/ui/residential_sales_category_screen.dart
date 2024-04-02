@@ -38,11 +38,11 @@ class ResidentialSalesCategoryScreen extends StatelessWidget {
           Directionality(
             textDirection: TextDirection.rtl,
             child: LinearProgressBar(
-              maxSteps: 5,
+              maxSteps: 4,
               minHeight: 4,
               progressType:
                   LinearProgressBar.progressTypeLinear, // Use Linear progress
-              currentStep: 2,
+              currentStep: 1,
               progressColor: Colors.red,
               backgroundColor: Colors.transparent,
             ),

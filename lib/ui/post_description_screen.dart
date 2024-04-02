@@ -40,11 +40,11 @@ class PostDescriptionScreen extends StatelessWidget {
             Directionality(
               textDirection: TextDirection.rtl,
               child: LinearProgressBar(
-                maxSteps: 5,
+                maxSteps: 4,
                 minHeight: 4,
                 progressType:
                     LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 5,
+                currentStep: 4,
                 progressColor: Colors.red,
                 backgroundColor: Colors.transparent,
               ),

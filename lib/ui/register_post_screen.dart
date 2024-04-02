@@ -1,8 +1,11 @@
 import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/location_setting_screen.dart';
 import 'package:aviz/widget/facility_chip.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 class RegisterPostScreen extends StatelessWidget {
   const RegisterPostScreen({super.key});
@@ -40,11 +43,11 @@ class RegisterPostScreen extends StatelessWidget {
             Directionality(
               textDirection: TextDirection.rtl,
               child: LinearProgressBar(
-                maxSteps: 5,
+                maxSteps: 4,
                 minHeight: 4,
                 progressType:
                     LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 3,
+                currentStep: 2,
                 progressColor: Colors.red,
                 backgroundColor: Colors.transparent,
               ),
@@ -120,9 +123,18 @@ class RegisterPostScreen extends StatelessWidget {
   }
 }
 
-class _FeatureSection extends StatelessWidget {
+class _FeatureSection extends StatefulWidget {
   const _FeatureSection();
 
+  @override
+  State<_FeatureSection> createState() => _FeatureSectionState();
+}
+
+class _FeatureSectionState extends State<_FeatureSection> {
+  int meterage = 100;
+  int roomNums = 1;
+  int year = 1402;
+  int floors = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -152,53 +164,42 @@ class _FeatureSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 15),
-                Container(
-                  width: 159,
-                  height: 48,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF9FAFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
+                GestureDetector(
+                  onTap: () {
+                    chossingDialog(roomNums, 0, 10);
+                  },
+                  child: Container(
+                    width: 159,
+                    height: 48,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF9FAFB),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset("assets/images/icon_increament.png"),
-                            Image.asset("assets/images/icon_decreament.png"),
-                          ],
-                        ),
-                        Expanded(
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextField(
-                              style: Theme.of(context).textTheme.bodyMedium,
-                              decoration: const InputDecoration(
-                                hintText: "6",
-                                hintStyle: TextStyle(
-                                  fontFamily: "SM",
-                                  fontSize: 16,
-                                  color: Color(0xffD0D5DD),
-                                ),
-                                contentPadding:
-                                    EdgeInsets.symmetric(vertical: 5),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.none,
-                                    width: 0,
-                                  ),
-                                ),
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset("assets/images/icon_increament.png"),
+                              Image.asset("assets/images/icon_decreament.png"),
+                            ],
+                          ),
+                          Text(
+                            "$roomNums",
+                            style: const TextStyle(
+                              fontFamily: "SM",
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -208,50 +209,42 @@ class _FeatureSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 15),
-                Container(
-                  width: 159,
-                  height: 48,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF9FAFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
+                GestureDetector(
+                  onTap: () {
+                    chossingDialog(year, 1300, 1403);
+                  },
+                  child: Container(
+                    width: 159,
+                    height: 48,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF9FAFB),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset("assets/images/icon_increament.png"),
-                            Image.asset("assets/images/icon_decreament.png"),
-                          ],
-                        ),
-                        Expanded(
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextField(
-                              style: Theme.of(context).textTheme.bodyMedium,
-                              decoration: InputDecoration(
-                                hintText: "1402",
-                                hintStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.none,
-                                    width: 0,
-                                  ),
-                                ),
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset("assets/images/icon_increament.png"),
+                              Image.asset("assets/images/icon_decreament.png"),
+                            ],
+                          ),
+                          Text(
+                            "$year",
+                            style: const TextStyle(
+                              fontFamily: "SM",
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -265,50 +258,42 @@ class _FeatureSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 15),
-                Container(
-                  width: 159,
-                  height: 48,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF9FAFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
+                GestureDetector(
+                  onTap: () {
+                    chossingDialog(meterage, 55, 500);
+                  },
+                  child: Container(
+                    width: 159,
+                    height: 48,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF9FAFB),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset("assets/images/icon_increament.png"),
-                            Image.asset("assets/images/icon_decreament.png"),
-                          ],
-                        ),
-                        Expanded(
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextField(
-                              style: Theme.of(context).textTheme.bodyMedium,
-                              decoration: InputDecoration(
-                                hintText: "350",
-                                hintStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.none,
-                                    width: 0,
-                                  ),
-                                ),
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset("assets/images/icon_increament.png"),
+                              Image.asset("assets/images/icon_decreament.png"),
+                            ],
+                          ),
+                          Text(
+                            "$meterage",
+                            style: const TextStyle(
+                              fontFamily: "SM",
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -318,50 +303,42 @@ class _FeatureSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 15),
-                Container(
-                  width: 159,
-                  height: 48,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF9FAFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
+                GestureDetector(
+                  onTap: () {
+                    chossingDialog(floors, 0, 30);
+                  },
+                  child: Container(
+                    width: 159,
+                    height: 48,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF9FAFB),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset("assets/images/icon_increament.png"),
-                            Image.asset("assets/images/icon_decreament.png"),
-                          ],
-                        ),
-                        Expanded(
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextField(
-                              style: Theme.of(context).textTheme.bodyMedium,
-                              decoration: InputDecoration(
-                                hintText: "0",
-                                hintStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.none,
-                                    width: 0,
-                                  ),
-                                ),
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset("assets/images/icon_increament.png"),
+                              Image.asset("assets/images/icon_decreament.png"),
+                            ],
+                          ),
+                          Text(
+                            "$floors",
+                            style: const TextStyle(
+                              fontFamily: "SM",
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -370,6 +347,73 @@ class _FeatureSection extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  chossingDialog(int valueNum, int minVal, int maxVal) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              NumberPicker(
+                selectedTextStyle: const TextStyle(
+                  fontFamily: "SM",
+                  fontSize: 24,
+                  color: Colors.blue,
+                ),
+                textStyle: const TextStyle(
+                  fontFamily: "SM",
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+                value: valueNum,
+                minValue: minVal,
+                maxValue: maxVal,
+                onChanged: (value) {
+                  setState(() {
+                    valueNum = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "بستن",
+                      style: TextStyle(
+                        fontFamily: "SM",
+                        fontSize: 16,
+                        color: ProjectColors.redColor,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "انتخاب",
+                      style: TextStyle(
+                        fontFamily: "SM",
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
