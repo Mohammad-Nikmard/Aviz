@@ -16,45 +16,52 @@ class _FacilityChipState extends State<FacilityChip> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 45,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: ProjectColors.greyColor.withOpacity(0.2),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            if (isTapped) {
+              isTapped = false;
+            } else if (!isTapped) {
+              isTapped = true;
+            }
+          });
+        },
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 45,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: ProjectColors.greyColor.withOpacity(0.2),
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(5),
+            ),
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(5),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FlutterSwitch(
-                inactiveText: "",
-                activeText: "",
-                inactiveColor: const Color(0xffD0D5DD),
-                activeColor: ProjectColors.redColor,
-                width: 28.0,
-                height: 20.0,
-                toggleSize: 15.0,
-                value: isTapped,
-                borderRadius: 30.0,
-                padding: 4.0,
-                showOnOff: true,
-                onToggle: (val) {
-                  setState(() {
-                    isTapped = val;
-                  });
-                },
-              ),
-              Text(
-                widget.title,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FlutterSwitch(
+                  inactiveText: "",
+                  activeText: "",
+                  inactiveColor: const Color(0xffD0D5DD),
+                  activeColor: ProjectColors.redColor,
+                  width: 38.0,
+                  height: 20.0,
+                  toggleSize: 15.0,
+                  value: isTapped,
+                  borderRadius: 30.0,
+                  padding: 4.0,
+                  showOnOff: true,
+                  onToggle: (val) {},
+                ),
+                Text(
+                  widget.title,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ),
         ),
       ),
