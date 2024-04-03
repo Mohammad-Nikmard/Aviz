@@ -1,6 +1,7 @@
 import 'package:aviz/ui/post_description_screen.dart';
 import 'package:aviz/widget/facility_chip.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class LocationSettingScreen extends StatelessWidget {
@@ -18,17 +19,15 @@ class LocationSettingScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              "assets/images/icon_close.png",
-              height: 24,
-              width: 24,
+            SvgPicture.asset(
+              'assets/images/icon_close.svg',
             ),
-            Image.asset("assets/images/icon_category_header.png"),
+            SvgPicture.asset('assets/images/icon_aviz_category.svg'),
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset("assets/images/icon_arrow_right.png"),
+              child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
             ),
           ],
         ),
@@ -59,7 +58,7 @@ class LocationSettingScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(width: 5),
-                    Image.asset("assets/images/icon_map.png"),
+                    SvgPicture.asset('assets/images/icon_map.svg'),
                   ],
                 ),
                 const SizedBox(height: 25),

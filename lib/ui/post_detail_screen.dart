@@ -2,6 +2,7 @@ import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/util/extension/int_extension.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class PostDetailScreen extends StatefulWidget {
   const PostDetailScreen({super.key});
@@ -17,6 +18,7 @@ class _PostDetailScreenState extends State<PostDetailScreen>
   @override
   void initState() {
     _controller = TabController(length: 4, vsync: this);
+    _controller!.index = 3;
     super.initState();
   }
 
@@ -38,9 +40,15 @@ class _PostDetailScreenState extends State<PostDetailScreen>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset("assets/images/icon_save.png"),
-              Image.asset("assets/images/icon_share.png"),
-              Image.asset("assets/images/icon_alert.png"),
+              SvgPicture.asset(
+                'assets/images/icon_save.svg',
+              ),
+              SvgPicture.asset(
+                'assets/images/icon_share.svg',
+              ),
+              SvgPicture.asset(
+                'assets/images/icon_alert.svg',
+              ),
             ],
           ),
         ),
@@ -51,7 +59,9 @@ class _PostDetailScreenState extends State<PostDetailScreen>
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset("assets/images/icon_arrow_right.png"),
+              child: SvgPicture.asset(
+                'assets/images/icon_arrow_right.svg',
+              ),
             ),
           ),
         ],
@@ -143,7 +153,13 @@ class _PostDetailScreenState extends State<PostDetailScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset("assets/images/icon_arrow_left_grey.png"),
+                      SvgPicture.asset(
+                        'assets/images/icon_arrow_left.svg',
+                        colorFilter: ColorFilter.mode(
+                          Colors.grey[400]!,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                       Text(
                         "هشدار های قبل از معامله!",
                         style: Theme.of(context).textTheme.bodyMedium,
@@ -159,6 +175,7 @@ class _PostDetailScreenState extends State<PostDetailScreen>
               SizedBox(
                 height: 35,
                 child: TabBar(
+                  dividerColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.tab,
                   padding: const EdgeInsets.only(left: 8),
                   indicatorPadding: const EdgeInsets.symmetric(horizontal: 4),
@@ -233,7 +250,9 @@ class InteractionButtons extends StatelessWidget {
                 children: [
                   const Text("اطلاعات تماس"),
                   const SizedBox(width: 6),
-                  Image.asset("assets/images/icon_call.png"),
+                  SvgPicture.asset(
+                    'assets/images/icon_call.svg',
+                  ),
                 ],
               ),
             ),
@@ -250,7 +269,9 @@ class InteractionButtons extends StatelessWidget {
                 children: [
                   const Text("گفتگو"),
                   const SizedBox(width: 6),
-                  Image.asset("assets/images/icon_chat.png"),
+                  SvgPicture.asset(
+                    'assets/images/icon_chat.svg',
+                  ),
                 ],
               ),
             ),
@@ -387,7 +408,9 @@ class SpecificationsTab extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              Image.asset("assets/images/icon_map.png"),
+              SvgPicture.asset(
+                'assets/images/icon_map.svg',
+              ),
             ],
           ),
           const SizedBox(
@@ -420,7 +443,9 @@ class FacilitiesTab extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(width: 5),
-              Image.asset("assets/images/icon_features.png"),
+              SvgPicture.asset(
+                'assets/images/icon_features.svg',
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -501,7 +526,9 @@ class FacilitiesTab extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(width: 5),
-              Image.asset("assets/images/icon_facilities.png"),
+              SvgPicture.asset(
+                'assets/images/icon_facilities.svg',
+              ),
             ],
           ),
           const SizedBox(height: 20),

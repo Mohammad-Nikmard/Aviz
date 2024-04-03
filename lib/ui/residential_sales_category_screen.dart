@@ -1,6 +1,8 @@
 import 'package:aviz/ui/register_post_screen.dart';
 import 'package:aviz/widget/category_option_chip.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class ResidentialSalesCategoryScreen extends StatelessWidget {
@@ -18,17 +20,15 @@ class ResidentialSalesCategoryScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              "assets/images/icon_close.png",
-              height: 24,
-              width: 24,
+            SvgPicture.asset(
+              'assets/images/icon_close.svg',
             ),
-            Image.asset("assets/images/icon_category_header.png"),
+            SvgPicture.asset('assets/images/icon_aviz_category.svg'),
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset("assets/images/icon_arrow_right.png"),
+              child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
             ),
           ],
         ),

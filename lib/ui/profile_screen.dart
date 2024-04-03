@@ -1,5 +1,6 @@
 import 'package:aviz/constants/color_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -9,7 +10,9 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        title: Image.asset("assets/images/icon_header_profile.png"),
+        title: SvgPicture.asset(
+          'assets/images/icon_my_aviz.svg',
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -41,17 +44,17 @@ class ProfileScreen extends StatelessWidget {
                   height: 25,
                 ),
                 const _OptionChip(
-                    title: "آگهی های من", image: "icon_posts.png"),
+                    title: "آگهی های من", image: "icon_posts.svg"),
                 const _OptionChip(
-                    title: "پرداخت های من", image: "icon_card.png"),
+                    title: "پرداخت های من", image: "icon_card.svg"),
                 const _OptionChip(
-                    title: "بازدید های اخیر", image: "icon_eye.png"),
+                    title: "بازدید های اخیر", image: "icon_eye.svg"),
                 const _OptionChip(
-                    title: "ذخیره شده ها", image: "icon_saved_posts.png"),
-                const _OptionChip(title: "تنظیمات", image: "icon_setting.png"),
+                    title: "ذخیره شده ها", image: "icon_saved_posts.svg"),
+                const _OptionChip(title: "تنظیمات", image: "icon_setting.svg"),
                 const _OptionChip(
-                    title: "پشتیبانی و قوانین", image: "icon_backup.png"),
-                const _OptionChip(title: "درباره آویز", image: "icon_info.png"),
+                    title: "پشتیبانی و قوانین", image: "icon_backup.svg"),
+                const _OptionChip(title: "درباره آویز", image: "icon_info.svg"),
                 const SizedBox(
                   height: 35,
                 ),
@@ -103,7 +106,13 @@ class _OptionChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
           children: [
-            Image.asset("assets/images/icon_arrow_left_grey.png"),
+            SvgPicture.asset(
+              'assets/images/icon_arrow_left.svg',
+              colorFilter: ColorFilter.mode(
+                Colors.grey[400]!,
+                BlendMode.srcIn,
+              ),
+            ),
             const Spacer(),
             Row(
               children: [
@@ -114,7 +123,9 @@ class _OptionChip extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Image.asset("assets/images/$image"),
+                SvgPicture.asset(
+                  'assets/images/$image',
+                ),
               ],
             ),
           ],
@@ -170,7 +181,9 @@ class SearchBox extends StatelessWidget {
                 ),
               ),
             ),
-            Image.asset("assets/images/icon_search.png"),
+            SvgPicture.asset(
+              'assets/images/icon_search.svg',
+            ),
           ],
         ),
       ),
@@ -192,7 +205,9 @@ class _Profile extends StatelessWidget {
               "حساب کاربری",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            Image.asset("assets/images/profile.png"),
+            SvgPicture.asset(
+              'assets/images/icon_profile.svg',
+            ),
           ],
         ),
         const SizedBox(
@@ -220,7 +235,9 @@ class _Profile extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Image.asset("assets/images/icon_edit.png"),
+                          SvgPicture.asset(
+                            'assets/images/icon_edit.svg',
+                          ),
                           const Spacer(),
                           Text(
                             "محمد نیک مرد",

@@ -3,6 +3,7 @@ import 'package:aviz/ui/register_validation_screen.dart.dart';
 import 'package:aviz/ui/login_screen.dart';
 import 'package:aviz/widget/aviz_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -142,7 +143,7 @@ class _ActionButtons extends StatelessWidget {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
@@ -153,7 +154,13 @@ class _ActionButtons extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("assets/images/icon_arrow_left_white.png"),
+                        SvgPicture.asset(
+                          'assets/images/icon_arrow_left.svg',
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         const Text("مرحله بعد"),
                       ],
                     ),

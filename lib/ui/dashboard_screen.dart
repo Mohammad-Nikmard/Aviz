@@ -4,6 +4,7 @@ import 'package:aviz/ui/real_estate_category_screen.dart';
 import 'package:aviz/ui/home_screen.dart';
 import 'package:aviz/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -41,45 +42,73 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             BottomNavigationBarItem(
               icon: Padding(
                 padding: const EdgeInsets.all(4),
-                child: Image.asset("assets/images/icon_profile.png"),
+                child: SvgPicture.asset(
+                  'assets/images/profile_circle.svg',
+                ),
               ),
               label: "آویز من",
               activeIcon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_profile_active.png"),
+                child: SvgPicture.asset(
+                  'assets/images/profile_circle.svg',
+                  colorFilter: const ColorFilter.mode(
+                    ProjectColors.redColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
             ),
             BottomNavigationBarItem(
               icon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_add.png"),
+                child: SvgPicture.asset(
+                  'assets/images/icon_add.svg',
+                ),
               ),
               label: "افزودن آویز",
               activeIcon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_add_active.png"),
+                child: SvgPicture.asset(
+                  'assets/images/icon_add.svg',
+                  colorFilter: const ColorFilter.mode(
+                    ProjectColors.redColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
             ),
             BottomNavigationBarItem(
               icon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_search.png"),
+                child: SvgPicture.asset(
+                  'assets/images/icon_search.svg',
+                ),
               ),
               label: "جستجو",
               activeIcon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_home_active.png"),
+                child: SvgPicture.asset(
+                  'assets/images/icon_search.svg',
+                  colorFilter: const ColorFilter.mode(
+                    ProjectColors.redColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
             ),
             BottomNavigationBarItem(
               icon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_home.png"),
+                child: SvgPicture.asset(
+                  'assets/images/app_logo_light.svg',
+                ),
               ),
               label: "آویز آگهی ها",
               activeIcon: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Image.asset("assets/images/icon_home_active.png"),
+                child: SvgPicture.asset(
+                  'assets/images/aviz_logo.svg',
+                ),
               ),
             ),
           ],

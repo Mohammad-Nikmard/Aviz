@@ -1,5 +1,6 @@
 import 'package:aviz/constants/color_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AvizWidget extends StatelessWidget {
   const AvizWidget({super.key});
@@ -16,7 +17,9 @@ class AvizWidget extends StatelessWidget {
           Radius.circular(6),
         ),
       ),
-      child: Image.asset("assets/images/icon_header.png"),
+      child: SvgPicture.asset(
+        'assets/images/icon_aviz.svg',
+      ),
     );
   }
 }

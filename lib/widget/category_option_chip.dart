@@ -1,5 +1,6 @@
 import 'package:aviz/constants/color_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoryOptionChip extends StatelessWidget {
   const CategoryOptionChip({super.key, required this.title});
@@ -23,7 +24,7 @@ class CategoryOptionChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
           children: [
-            Image.asset("assets/images/icon_arrow_left_red.png"),
+            SvgPicture.asset('assets/images/icon_arrow_left.svg'),
             const Spacer(),
             Row(
               children: [

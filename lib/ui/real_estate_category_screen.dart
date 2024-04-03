@@ -1,6 +1,7 @@
 import 'package:aviz/ui/residential_sales_category_screen.dart';
 import 'package:aviz/widget/category_option_chip.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class RealEstateCategoryScreen extends StatelessWidget {
@@ -17,13 +18,11 @@ class RealEstateCategoryScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              "assets/images/icon_close.png",
-              height: 24,
-              width: 24,
+            SvgPicture.asset(
+              'assets/images/icon_close.svg',
             ),
-            Image.asset("assets/images/icon_category_header.png"),
-            Image.asset("assets/images/icon_arrow_right.png"),
+            SvgPicture.asset('assets/images/icon_aviz_category.svg'),
+            SvgPicture.asset('assets/images/icon_arrow_right.svg'),
           ],
         ),
       ),

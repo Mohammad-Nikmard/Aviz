@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:aviz/constants/color_constants.dart';
+import 'package:aviz/ui/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -170,7 +171,14 @@ class _ActionButton extends StatelessWidget {
             child: SizedBox(
               height: 40,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashBoardScreen(),
+                    ),
+                  );
+                },
                 child: const Text("تایید ورود"),
               ),
             ),

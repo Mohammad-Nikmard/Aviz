@@ -1,6 +1,6 @@
 import 'package:aviz/DI/service_locator.dart';
 import 'package:aviz/constants/color_constants.dart';
-import 'package:aviz/ui/dashboard_screen.dart';
+import 'package:aviz/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const DashBoardScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }

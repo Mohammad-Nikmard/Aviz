@@ -1,9 +1,8 @@
 import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/location_setting_screen.dart';
 import 'package:aviz/widget/facility_chip.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -22,17 +21,15 @@ class RegisterPostScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              "assets/images/icon_close.png",
-              height: 24,
-              width: 24,
+            SvgPicture.asset(
+              'assets/images/icon_close.svg',
             ),
-            Image.asset("assets/images/icon_post_aviz.png"),
+            SvgPicture.asset('assets/images/icon_aviz_register.svg'),
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset("assets/images/icon_arrow_right.png"),
+              child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
             ),
           ],
         ),
@@ -90,7 +87,7 @@ class RegisterPostScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(width: 5),
-                      Image.asset("assets/images/icon_facilities.png"),
+                      SvgPicture.asset("assets/images/icon_facilities.svg"),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -147,7 +144,7 @@ class _FeatureSectionState extends State<_FeatureSection> {
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(width: 5),
-            Image.asset('assets/images/icon_features.png')
+            SvgPicture.asset('assets/images/icon_features.svg'),
           ],
         ),
         const SizedBox(
@@ -247,13 +244,7 @@ class _FeatureSectionState extends State<_FeatureSection> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset("assets/images/icon_increament.png"),
-                              Image.asset("assets/images/icon_decreament.png"),
-                            ],
-                          ),
+                          SvgPicture.asset('assets/images/icon_dec_inc.svg'),
                           Text(
                             "$roomNums",
                             style: const TextStyle(
@@ -356,13 +347,7 @@ class _FeatureSectionState extends State<_FeatureSection> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset("assets/images/icon_increament.png"),
-                              Image.asset("assets/images/icon_decreament.png"),
-                            ],
-                          ),
+                          SvgPicture.asset('assets/images/icon_dec_inc.svg'),
                           Text(
                             "$year",
                             style: const TextStyle(
@@ -469,13 +454,7 @@ class _FeatureSectionState extends State<_FeatureSection> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset("assets/images/icon_increament.png"),
-                              Image.asset("assets/images/icon_decreament.png"),
-                            ],
-                          ),
+                          SvgPicture.asset('assets/images/icon_dec_inc.svg'),
                           Text(
                             "$meterage",
                             style: const TextStyle(
@@ -578,13 +557,7 @@ class _FeatureSectionState extends State<_FeatureSection> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset("assets/images/icon_increament.png"),
-                              Image.asset("assets/images/icon_decreament.png"),
-                            ],
-                          ),
+                          SvgPicture.asset('assets/images/icon_dec_inc.svg'),
                           Text(
                             "$floors",
                             style: const TextStyle(
@@ -628,7 +601,7 @@ class _ChooseCategorySectionState extends State<_ChooseCategorySection> {
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(width: 5),
-            Image.asset("assets/images/icon_category.png"),
+            SvgPicture.asset('assets/images/icon_category.svg'),
           ],
         ),
         const SizedBox(height: 20),
@@ -716,7 +689,8 @@ class _ChooseCategorySectionState extends State<_ChooseCategorySection> {
                             ),
                           ),
                         ],
-                        icon: Image.asset("assets/images/icon_arrow-down.png"),
+                        icon: SvgPicture.asset(
+                            'assets/images/icon_arrow_down.svg'),
                         underline: Container(),
                         isExpanded: true,
                         value: _dropdownValue,
