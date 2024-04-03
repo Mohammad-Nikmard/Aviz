@@ -1,8 +1,8 @@
 import 'package:aviz/constants/color_constants.dart';
-import 'package:aviz/ui/onboarding_screen.dart';
 import 'package:aviz/ui/real_estate_category_screen.dart';
 import 'package:aviz/ui/home_screen.dart';
 import 'package:aviz/ui/profile_screen.dart';
+import 'package:aviz/ui/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -119,7 +119,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         children: const [
           ProfileScreen(),
           RealEstateCategoryScreen(),
-          OnBoardingScreen(),
+          SearchScreen(),
           HomeScreen(),
         ],
       ),
