@@ -48,12 +48,9 @@ class HotAvizWidget extends StatelessWidget {
                 ),
                 child: SizedBox(
                   height: 112,
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: CachedImage(
-                      imageURL: promotion.thumbnail!,
-                      radius: 5,
-                    ),
+                  child: CachedImage(
+                    imageURL: promotion.thumbnail!,
+                    radius: 5,
                   ),
                 ),
               ),

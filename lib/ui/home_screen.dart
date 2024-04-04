@@ -4,9 +4,11 @@ import 'package:aviz/data/model/promotion.dart';
 import 'package:aviz/ui/category_search_screen.dart';
 import 'package:aviz/widget/hot_aviz_widget.dart';
 import 'package:aviz/widget/recent_aviz_post.dart';
+import 'package:aviz/widget/shimmer_skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,11 +18,15 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state is HomeLoadingState) {
-          return const CircularProgressIndicator();
+          return Shimmer.fromColors(
+            baseColor: Colors.grey[500]!,
+            highlightColor: Colors.grey[200]!,
+            child: const HomeLoading(),
+          );
         }
         if (state is HomeResponseState) {
           return Scaffold(
-            backgroundColor: const Color.fromARGB(255, 243, 243, 243),
+            backgroundColor: Colors.white,
             appBar: AppBar(
               scrolledUnderElevation: 0,
               centerTitle: true,
@@ -198,6 +204,112 @@ class RecentPostList extends StatelessWidget {
           );
         },
         childCount: recentPromotionList.length,
+      ),
+    );
+  }
+}
+
+class HomeLoading extends StatelessWidget {
+  const HomeLoading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Center(
+                child: ShimmerSkelton(
+                  height: 20,
+                  radius: 5,
+                  width: 100,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ShimmerSkelton(
+                      height: 20,
+                      radius: 5,
+                      width: 90,
+                    ),
+                    ShimmerSkelton(
+                      height: 20,
+                      radius: 5,
+                      width: 150,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
+              SizedBox(
+                height: 267,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  reverse: true,
+                  children: const [
+                    ShimmerSkelton(
+                      height: 267,
+                      radius: 10,
+                      width: 224,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: ShimmerSkelton(
+                        height: 267,
+                        radius: 10,
+                        width: 224,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ShimmerSkelton(
+                      height: 20,
+                      radius: 5,
+                      width: 90,
+                    ),
+                    ShimmerSkelton(
+                      height: 20,
+                      radius: 5,
+                      width: 150,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
+              SizedBox(
+                height: 300,
+                child: ListView(
+                  children: [
+                    ShimmerSkelton(
+                      height: 139,
+                      radius: 10,
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: ShimmerSkelton(
+                        height: 139,
+                        radius: 10,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
