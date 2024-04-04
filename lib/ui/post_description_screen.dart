@@ -3,7 +3,6 @@ import 'package:aviz/widget/facility_chip.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class PostDescriptionScreen extends StatelessWidget {
   const PostDescriptionScreen(
@@ -17,72 +16,35 @@ class PostDescriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: close,
-              child: SvgPicture.asset(
-                'assets/images/icon_close.svg',
-              ),
-            ),
-            SvgPicture.asset('assets/images/icon_aviz_category.svg'),
-            GestureDetector(
-              onTap: pop,
-              child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Directionality(
-              textDirection: TextDirection.rtl,
-              child: LinearProgressBar(
-                maxSteps: 4,
-                minHeight: 4,
-                progressType:
-                    LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 4,
-                progressColor: Colors.red,
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
-              child: Column(
-                children: [
-                  const PostPicture(),
-                  const SizedBox(height: 30),
-                  const TitleAndDescription(),
-                  const SizedBox(height: 20),
-                  const FacilityChip(title: "فعال کردن گفتگو"),
-                  const FacilityChip(title: "فعال کردن تماس"),
-                  const SizedBox(height: 30),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("ثبت آگهی"),
-                        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
+            child: Column(
+              children: [
+                const PostPicture(),
+                const SizedBox(height: 30),
+                const TitleAndDescription(),
+                const SizedBox(height: 20),
+                const FacilityChip(title: "فعال کردن گفتگو"),
+                const FacilityChip(title: "فعال کردن تماس"),
+                const SizedBox(height: 30),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text("ثبت آگهی"),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

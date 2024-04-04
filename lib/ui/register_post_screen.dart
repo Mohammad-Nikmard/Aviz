@@ -2,7 +2,6 @@ import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/widget/facility_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class RegisterPostScreen extends StatelessWidget {
@@ -17,104 +16,67 @@ class RegisterPostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: close,
-              child: SvgPicture.asset(
-                'assets/images/icon_close.svg',
-              ),
-            ),
-            SvgPicture.asset('assets/images/icon_aviz_register.svg'),
-            GestureDetector(
-              onTap: pop,
-              child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Directionality(
-              textDirection: TextDirection.rtl,
-              child: LinearProgressBar(
-                maxSteps: 4,
-                minHeight: 4,
-                progressType:
-                    LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 2,
-                progressColor: Colors.red,
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: Column(
-                children: [
-                  const _ChooseCategorySection(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Divider(
-                    indent: 0,
-                    endIndent: 0,
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    thickness: 1,
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const _FeatureSection(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Divider(
-                    indent: 0,
-                    endIndent: 0,
-                    color: ProjectColors.greyColor.withOpacity(0.2),
-                    thickness: 1,
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "امکانات",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      const SizedBox(width: 5),
-                      SvgPicture.asset("assets/images/icon_facilities.svg"),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  const FacilityChip(title: "آسانسور"),
-                  const FacilityChip(title: "پارکینگ"),
-                  const FacilityChip(title: "انباری"),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(MediaQuery.of(context).size.width, 40),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: Column(
+              children: [
+                const _ChooseCategorySection(),
+                const SizedBox(
+                  height: 25,
+                ),
+                Divider(
+                  indent: 0,
+                  endIndent: 0,
+                  color: ProjectColors.greyColor.withOpacity(0.2),
+                  thickness: 1,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const _FeatureSection(),
+                const SizedBox(
+                  height: 25,
+                ),
+                Divider(
+                  indent: 0,
+                  endIndent: 0,
+                  color: ProjectColors.greyColor.withOpacity(0.2),
+                  thickness: 1,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "امکانات",
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                    onPressed: callBack,
-                    child: const Text("بعدی"),
+                    const SizedBox(width: 5),
+                    SvgPicture.asset("assets/images/icon_facilities.svg"),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const FacilityChip(title: "آسانسور"),
+                const FacilityChip(title: "پارکینگ"),
+                const FacilityChip(title: "انباری"),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(MediaQuery.of(context).size.width, 40),
                   ),
-                  const SizedBox(height: 20),
-                ],
-              ),
+                  onPressed: callBack,
+                  child: const Text("بعدی"),
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

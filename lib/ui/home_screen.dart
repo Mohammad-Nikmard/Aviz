@@ -1,5 +1,7 @@
 import 'package:aviz/bloc/home/home_bloc.dart';
+import 'package:aviz/bloc/home/home_event.dart';
 import 'package:aviz/bloc/home/home_state.dart';
+import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/data/model/promotion.dart';
 import 'package:aviz/ui/category_search_screen.dart';
 import 'package:aviz/widget/hot_aviz_widget.dart';
@@ -19,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return Shimmer.fromColors(
-            baseColor: Colors.grey[500]!,
+            baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[200]!,
             child: const HomeLoading(),
           );
@@ -39,74 +41,80 @@ class HomeScreen extends StatelessWidget {
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: CustomScrollView(
-                  slivers: [
-                    state.promotionHotList.fold(
-                      (exceptionMessage) {
-                        return SliverToBoxAdapter(
-                          child: Text(
-                            exceptionMessage,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        );
-                      },
-                      (hotList) {
-                        return SliverPadding(
-                          padding: const EdgeInsets.only(top: 20),
-                          sliver: ListHeader(
-                            title: "آویز های داغ",
-                            promotionList: hotList,
-                          ),
-                        );
-                      },
-                    ),
-                    state.promotionHotList.fold(
-                      (exceptionMessage) {
-                        return SliverToBoxAdapter(
-                          child: Text(
-                            exceptionMessage,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        );
-                      },
-                      (promotList) {
-                        return HotPostList(
-                          hotPromotions: promotList,
-                        );
-                      },
-                    ),
-                    state.recentPromotionList.fold(
-                      (exceptionMessage) {
-                        return SliverToBoxAdapter(
-                          child: Text(
-                            exceptionMessage,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        );
-                      },
-                      (recentList) {
-                        return ListHeader(
-                          title: "آویز های اخیر",
-                          promotionList: recentList,
-                        );
-                      },
-                    ),
-                    state.recentPromotionList.fold(
-                      (exceptionMessage) {
-                        return SliverToBoxAdapter(
-                          child: Text(
-                            exceptionMessage,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        );
-                      },
-                      (recentPromotList) {
-                        return RecentPostList(
-                          recentPromotionList: recentPromotList,
-                        );
-                      },
-                    ),
-                  ],
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    context.read<HomeBloc>().add(HomeDataRequestEvent());
+                  },
+                  color: ProjectColors.redColor,
+                  child: CustomScrollView(
+                    slivers: [
+                      state.promotionHotList.fold(
+                        (exceptionMessage) {
+                          return SliverToBoxAdapter(
+                            child: Text(
+                              exceptionMessage,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          );
+                        },
+                        (hotList) {
+                          return SliverPadding(
+                            padding: const EdgeInsets.only(top: 20),
+                            sliver: ListHeader(
+                              title: "آویز های داغ",
+                              promotionList: hotList,
+                            ),
+                          );
+                        },
+                      ),
+                      state.promotionHotList.fold(
+                        (exceptionMessage) {
+                          return SliverToBoxAdapter(
+                            child: Text(
+                              exceptionMessage,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          );
+                        },
+                        (promotList) {
+                          return HotPostList(
+                            hotPromotions: promotList,
+                          );
+                        },
+                      ),
+                      state.recentPromotionList.fold(
+                        (exceptionMessage) {
+                          return SliverToBoxAdapter(
+                            child: Text(
+                              exceptionMessage,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          );
+                        },
+                        (recentList) {
+                          return ListHeader(
+                            title: "آویز های اخیر",
+                            promotionList: recentList,
+                          );
+                        },
+                      ),
+                      state.recentPromotionList.fold(
+                        (exceptionMessage) {
+                          return SliverToBoxAdapter(
+                            child: Text(
+                              exceptionMessage,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          );
+                        },
+                        (recentPromotList) {
+                          return RecentPostList(
+                            recentPromotionList: recentPromotList,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -245,7 +253,7 @@ class HomeLoading extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 30),
               SizedBox(
                 height: 267,
                 child: ListView(
