@@ -7,9 +7,10 @@ class Promotion {
   String? description;
   int? price;
   String? thumbnail;
+  bool isHot;
 
   Promotion(this.collectionId, this.id, this.title, this.description,
-      this.price, this.thumbnail);
+      this.price, this.thumbnail, this.isHot);
 
   factory Promotion.withJson(Map<String, dynamic> jsonMapObject) {
     return Promotion(
@@ -19,6 +20,7 @@ class Promotion {
       jsonMapObject["description"],
       jsonMapObject["price"],
       "${StringConstants.baseUrl}${jsonMapObject["collectionId"]}/${jsonMapObject["id"]}/${jsonMapObject["thumbnail"]}",
+      jsonMapObject["is_hot"],
     );
   }
 }

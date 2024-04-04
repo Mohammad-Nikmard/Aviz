@@ -35,9 +35,24 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: CustomScrollView(
                   slivers: [
-                    const SliverPadding(
-                      padding: EdgeInsets.only(top: 20),
-                      sliver: ListHeader(title: "آویز های داغ"),
+                    state.promotionHotList.fold(
+                      (exceptionMessage) {
+                        return SliverToBoxAdapter(
+                          child: Text(
+                            exceptionMessage,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      },
+                      (hotList) {
+                        return SliverPadding(
+                          padding: const EdgeInsets.only(top: 20),
+                          sliver: ListHeader(
+                            title: "آویز های داغ",
+                            promotionList: hotList,
+                          ),
+                        );
+                      },
                     ),
                     state.promotionHotList.fold(
                       (exceptionMessage) {
@@ -54,7 +69,22 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const ListHeader(title: "آویز های اخیر"),
+                    state.recentPromotionList.fold(
+                      (exceptionMessage) {
+                        return SliverToBoxAdapter(
+                          child: Text(
+                            exceptionMessage,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      },
+                      (recentList) {
+                        return ListHeader(
+                          title: "آویز های اخیر",
+                          promotionList: recentList,
+                        );
+                      },
+                    ),
                     state.recentPromotionList.fold(
                       (exceptionMessage) {
                         return SliverToBoxAdapter(
@@ -83,8 +113,10 @@ class HomeScreen extends StatelessWidget {
 }
 
 class ListHeader extends StatelessWidget {
-  const ListHeader({super.key, required this.title});
+  const ListHeader(
+      {super.key, required this.title, required this.promotionList});
   final String title;
+  final List<Promotion> promotionList;
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -99,6 +131,7 @@ class ListHeader extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => CategorySearch(
                       title: title,
+                      promotionList: promotionList,
                     ),
                   ),
                 );
