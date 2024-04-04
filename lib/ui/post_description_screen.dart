@@ -6,7 +6,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class PostDescriptionScreen extends StatelessWidget {
-  const PostDescriptionScreen({super.key});
+  const PostDescriptionScreen(
+      {super.key,
+      required this.callback,
+      required this.pop,
+      required this.close});
+  final VoidCallback callback;
+  final VoidCallback pop;
+  final VoidCallback close;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +27,15 @@ class PostDescriptionScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              'assets/images/icon_close.svg',
+            GestureDetector(
+              onTap: close,
+              child: SvgPicture.asset(
+                'assets/images/icon_close.svg',
+              ),
             ),
             SvgPicture.asset('assets/images/icon_aviz_category.svg'),
             GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: pop,
               child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
             ),
           ],

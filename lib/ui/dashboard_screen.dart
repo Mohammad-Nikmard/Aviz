@@ -2,7 +2,7 @@ import 'package:aviz/DI/service_locator.dart';
 import 'package:aviz/bloc/home/home_bloc.dart';
 import 'package:aviz/bloc/home/home_event.dart';
 import 'package:aviz/constants/color_constants.dart';
-import 'package:aviz/ui/real_estate_category_screen.dart';
+import 'package:aviz/ui/category_screen.dart';
 import 'package:aviz/ui/home_screen.dart';
 import 'package:aviz/ui/profile_screen.dart';
 import 'package:aviz/ui/search_screen.dart';
@@ -122,7 +122,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         index: selectedIndex,
         children: [
           const ProfileScreen(),
-          const RealEstateCategoryScreen(),
+          // const RealEstateCategoryScreen(),
+          const CategoryScreen(),
           const SearchScreen(),
           BlocProvider(
             create: (context) =>

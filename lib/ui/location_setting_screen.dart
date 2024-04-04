@@ -1,11 +1,17 @@
-import 'package:aviz/ui/post_description_screen.dart';
 import 'package:aviz/widget/facility_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class LocationSettingScreen extends StatelessWidget {
-  const LocationSettingScreen({super.key});
+  const LocationSettingScreen(
+      {super.key,
+      required this.callBack,
+      required this.pop,
+      required this.close});
+  final VoidCallback callBack;
+  final VoidCallback pop;
+  final VoidCallback close;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +25,15 @@ class LocationSettingScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              'assets/images/icon_close.svg',
+            GestureDetector(
+              onTap: close,
+              child: SvgPicture.asset(
+                'assets/images/icon_close.svg',
+              ),
             ),
             SvgPicture.asset('assets/images/icon_aviz_category.svg'),
             GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: pop,
               child: SvgPicture.asset('assets/images/icon_arrow_right.svg'),
             ),
           ],
@@ -81,14 +88,7 @@ class LocationSettingScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PostDescriptionScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: callBack,
                     child: const Text("بعدی"),
                   ),
                 ),
