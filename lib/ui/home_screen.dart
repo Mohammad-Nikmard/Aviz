@@ -1,7 +1,11 @@
+import 'package:aviz/bloc/home/home_bloc.dart';
+import 'package:aviz/bloc/home/home_state.dart';
+import 'package:aviz/data/model/promotion.dart';
 import 'package:aviz/ui/category_search_screen.dart';
 import 'package:aviz/widget/hot_aviz_widget.dart';
 import 'package:aviz/widget/recent_aviz_post.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,35 +13,71 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 243, 243, 243),
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        centerTitle: true,
-        title: SvgPicture.asset(
-          'assets/images/icon_aviz.svg',
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      body: const SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 20,
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state is HomeLoadingState) {
+          return const CircularProgressIndicator();
+        }
+        if (state is HomeResponseState) {
+          return Scaffold(
+            backgroundColor: const Color.fromARGB(255, 243, 243, 243),
+            appBar: AppBar(
+              scrolledUnderElevation: 0,
+              centerTitle: true,
+              title: SvgPicture.asset(
+                'assets/images/icon_aviz.svg',
+              ),
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+            ),
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: CustomScrollView(
+                  slivers: [
+                    const SliverPadding(
+                      padding: EdgeInsets.only(top: 20),
+                      sliver: ListHeader(title: "آویز های داغ"),
+                    ),
+                    state.promotionHotList.fold(
+                      (exceptionMessage) {
+                        return SliverToBoxAdapter(
+                          child: Text(
+                            exceptionMessage,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      },
+                      (promotList) {
+                        return HotPostList(
+                          hotPromotions: promotList,
+                        );
+                      },
+                    ),
+                    const ListHeader(title: "آویز های اخیر"),
+                    state.recentPromotionList.fold(
+                      (exceptionMessage) {
+                        return SliverToBoxAdapter(
+                          child: Text(
+                            exceptionMessage,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      },
+                      (recentPromotList) {
+                        return RecentPostList(
+                          recentPromotionList: recentPromotList,
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
-              ListHeader(title: "آویز های داغ"),
-              HotPostList(),
-              ListHeader(title: "آویز های اخیر"),
-              RecentPostList(),
-            ],
-          ),
-        ),
-      ),
+            ),
+          );
+        }
+        return const Text("");
+      },
     );
   }
 }
@@ -80,7 +120,8 @@ class ListHeader extends StatelessWidget {
 }
 
 class HotPostList extends StatelessWidget {
-  const HotPostList({super.key});
+  const HotPostList({super.key, required this.hotPromotions});
+  final List<Promotion> hotPromotions;
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +131,14 @@ class HotPostList extends StatelessWidget {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: hotPromotions.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return const Padding(
-                padding: EdgeInsets.only(left: 15, bottom: 20),
-                child: HotAvizWidget(),
+              return Padding(
+                padding: const EdgeInsets.only(left: 15, bottom: 20),
+                child: HotAvizWidget(
+                  promotion: hotPromotions[index],
+                ),
               );
             },
           ),
@@ -106,19 +149,22 @@ class HotPostList extends StatelessWidget {
 }
 
 class RecentPostList extends StatelessWidget {
-  const RecentPostList({super.key});
+  const RecentPostList({super.key, required this.recentPromotionList});
+  final List<Promotion> recentPromotionList;
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: RecentAvizPost(),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: RecentAvizPost(
+              promotion: recentPromotionList[index],
+            ),
           );
         },
-        childCount: 10,
+        childCount: recentPromotionList.length,
       ),
     );
   }

@@ -1,10 +1,13 @@
 import 'package:aviz/constants/color_constants.dart';
+import 'package:aviz/data/model/promotion.dart';
 import 'package:aviz/ui/post_detail_screen.dart';
+import 'package:aviz/widget/cached_image.dart';
 import 'package:aviz/widget/price_tag.dart';
 import 'package:flutter/material.dart';
 
 class RecentAvizPost extends StatelessWidget {
-  const RecentAvizPost({super.key});
+  const RecentAvizPost({super.key, required this.promotion});
+  final Promotion promotion;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +41,19 @@ class RecentAvizPost extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
           child: Row(
             children: [
-              Container(
-                height: 110,
-                width: 111,
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
+              ClipRRect(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(5),
+                ),
+                child: SizedBox(
+                  height: 110,
+                  width: 111,
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: CachedImage(
+                      imageURL: promotion.thumbnail!,
+                      radius: 5,
+                    ),
                   ),
                 ),
               ),
@@ -57,17 +66,17 @@ class RecentAvizPost extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Text(
-                        "واحد دوبلکس فول امکانات",
+                        promotion.title ?? "",
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       child: Text(
-                        "سال ساخت 1398 سند تک برگ دوبلکس تجهیزات کامل",
-                        style: TextStyle(
+                        promotion.description ?? "",
+                        style: const TextStyle(
                           fontFamily: "SM",
                           fontSize: 12,
                           color: ProjectColors.greyColor,
@@ -76,12 +85,14 @@ class RecentAvizPost extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        PriceTag(),
-                        Spacer(),
-                        Text(
+                        PriceTag(
+                          price: promotion.price ?? 123456789,
+                        ),
+                        const Spacer(),
+                        const Text(
                           "قیمت: ",
                           textDirection: TextDirection.rtl,
                           style: TextStyle(

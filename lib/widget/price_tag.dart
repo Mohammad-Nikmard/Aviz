@@ -3,7 +3,8 @@ import 'package:aviz/util/extension/int_extension.dart';
 import 'package:flutter/material.dart';
 
 class PriceTag extends StatelessWidget {
-  const PriceTag({super.key});
+  const PriceTag({super.key, required this.price});
+  final int price;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class PriceTag extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Center(
           child: Text(
-            25683000000.convertToPrice(),
+            price.convertToPrice(),
             textDirection: TextDirection.ltr,
             style: const TextStyle(
               fontFamily: "SM",

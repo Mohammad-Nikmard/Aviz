@@ -4,8 +4,8 @@ import 'package:aviz/util/api_exception.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class Promotionrepository {
-  Future<Either<String, List<Promotion>>> getpromotionList();
   Future<Either<String, List<Promotion>>> getHotPromotions();
+  Future<Either<String, List<Promotion>>> getRecentPromotions();
 }
 
 class PromotionRemoteRepository extends Promotionrepository {
@@ -13,9 +13,9 @@ class PromotionRemoteRepository extends Promotionrepository {
 
   PromotionRemoteRepository(this._datasource);
   @override
-  Future<Either<String, List<Promotion>>> getpromotionList() async {
+  Future<Either<String, List<Promotion>>> getHotPromotions() async {
     try {
-      var response = await _datasource.getpromotionList();
+      var response = await _datasource.getHotPromotions();
       return right(response);
     } on ApiException catch (ex) {
       return left(ex.message!);
@@ -23,9 +23,9 @@ class PromotionRemoteRepository extends Promotionrepository {
   }
 
   @override
-  Future<Either<String, List<Promotion>>> getHotPromotions() async {
+  Future<Either<String, List<Promotion>>> getRecentPromotions() async {
     try {
-      var response = await _datasource.getHotPromotions();
+      var response = await _datasource.getRecentPromotions();
       return right(response);
     } on ApiException catch (ex) {
       return left(ex.message!);

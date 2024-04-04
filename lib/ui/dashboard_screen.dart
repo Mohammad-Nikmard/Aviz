@@ -1,9 +1,13 @@
+import 'package:aviz/DI/service_locator.dart';
+import 'package:aviz/bloc/home/home_bloc.dart';
+import 'package:aviz/bloc/home/home_event.dart';
 import 'package:aviz/constants/color_constants.dart';
 import 'package:aviz/ui/real_estate_category_screen.dart';
 import 'package:aviz/ui/home_screen.dart';
 import 'package:aviz/ui/profile_screen.dart';
 import 'package:aviz/ui/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -116,11 +120,15 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
       body: IndexedStack(
         index: selectedIndex,
-        children: const [
-          ProfileScreen(),
-          RealEstateCategoryScreen(),
-          SearchScreen(),
-          HomeScreen(),
+        children: [
+          const ProfileScreen(),
+          const RealEstateCategoryScreen(),
+          const SearchScreen(),
+          BlocProvider(
+            create: (context) =>
+                HomeBloc(locator.get())..add(HomeDataRequestEvent()),
+            child: const HomeScreen(),
+          ),
         ],
       ),
     );

@@ -1,3 +1,3 @@
 class StringConstants {
-  static const baseUrl = "https://startflutter.ir/";
+  static const baseUrl = "https://startflutter.ir/api/files/";
 }

@@ -8,6 +8,8 @@ class ApiException implements Exception {
   ApiException(this.message, this.errorCode, {this.response}) {
     if (errorCode != 400) {
       return;
-    } else if (message == "") {}
+    } else if (message == "Failed to authenticate.") {
+      message = "نام کاربری یا رمز عبور اشتباه است.";
+    }
   }
 }
